@@ -184,26 +184,26 @@ export function MainNavigation() {
                       <li>
                         <NavigationMenuLink asChild>
                           <div className="opacity-50 pointer-events-none">
-                            <Link to="/campaigns" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
                               <MapIcon size={16} className=" size-9 rounded-sm p-2 stroke-starlights-indigo-600" />
                               <div>
                                 <div className="font-medium mt-0.5">Campaigns</div>
                                 <div className="text-muted-foreground text-xs ">Manage your character's adventures.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
                           <div className="opacity-50 pointer-events-none">
-                            <Link to="/campaigns" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
                               <LibraryBigIcon size={16} className=" size-9 rounded-sm p-2 stroke-starlights-indigo-600" />
                               <div>
                                 <div className="font-medium mt-0.5">Compendium</div>
                                 <div className="text-muted-foreground text-xs ">A searchable archive of player options.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>
@@ -213,13 +213,13 @@ export function MainNavigation() {
                       <li>
                         <NavigationMenuLink asChild>
                           <div className="opacity-50 pointer-events-none">
-                            <Link to="/homebrew" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
                               <Icon iconNode={cauldron} size={16} className=" size-9 rounded-sm p-2 stroke-starlights-purple-600"></Icon>
                               <div>
                                 <div className="font-medium mt-0.5">Homebrew Content</div>
                                 <div className="text-muted-foreground text-xs ">Create and manage your custom content.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>
@@ -246,53 +246,53 @@ export function MainNavigation() {
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
-                          <div className=" ">
-                            <Link to="/characters/12345/builder/class-options" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
+                          <div className="opacity-50 pointer-events-none">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
                               <AnvilIcon size={16} className=" size-9 rounded-sm p-2 stroke-yellow-500 dark:stroke-yellow-600" />
                               <div>
                                 <div className="font-medium mt-0.5">Build Options</div>
                                 <div className="text-muted-foreground text-xs ">Choose your build options.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
                           <div className="opacity-50 pointer-events-none">
-                            <Link to="/characters/12345/builder/spellcasting" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug ">
                               <WandIcon size={16} className=" size-9 rounded-sm p-2 stroke-yellow-500 dark:stroke-yellow-600" />
                               <div>
                                 <div className="font-medium mt-0.5 upper">Spellcasting Options</div>
                                 <div className="text-muted-foreground text-xs ">Choose your spellcasting options.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
                           <div className="opacity-50 pointer-events-none">
-                            <Link to="/characters/12345/builder/equipment" className="flex flex-row items-center gap-3 font-overpass leading-snug">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug">
                               <SwordIcon size={16} className=" size-9 rounded-sm p-2 stroke-yellow-500 dark:stroke-yellow-600" />
                               <div>
                                 <div className="font-medium mt-0.5">Equipment</div>
                                 <div className="text-muted-foreground text-xs ">Choose your equipment.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
-                          <div className=" ">
-                            <Link to="/characters/12345/builder/manage" className="flex flex-row items-center gap-3 font-overpass leading-snug">
+                          <div className="opacity-50 pointer-events-none">
+                            <span aria-disabled="true" className="flex flex-row items-center gap-3 font-overpass leading-snug">
                               <PencilRulerIcon size={16} className=" size-9 rounded-sm p-2 stroke-yellow-500 dark:stroke-yellow-600" />
                               <div>
                                 <div className="font-medium mt-0.5">Manage Character</div>
                                 <div className="text-muted-foreground text-xs ">Manage your character details.</div>
                               </div>
-                            </Link>
+                            </span>
                           </div>
                         </NavigationMenuLink>
                       </li>

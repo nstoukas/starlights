@@ -11,6 +11,11 @@ public interface IElementsRepository : IRepository
     void Add(Element element);
 
     /// <summary>
+    /// Determines whether the repository holds any elements at all.
+    /// </summary>
+    Task<bool> AnyElementsAsync();
+
+    /// <summary>
     /// Deletes an element by its identifier.
     /// </summary>
     Task<bool> DeleteElementAsync(Guid identifier);

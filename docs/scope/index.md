@@ -27,7 +27,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 6 | Developer character page | Foundation | done |
 | 7 | Content model and starter seed | Foundation | existing |
 | 8 | Content editing API | Foundation | existing |
-| 9 | Stabilize the fork | Foundation | planned |
+| 9 | Stabilize the fork | Foundation | done |
 | 10 | SRD attribution and content licensing | Foundation | planned |
 | 11 | Rules content model for SRD 5.2 | Foundation | planned |
 | 12 | Content files: export and import | Foundation | planned |

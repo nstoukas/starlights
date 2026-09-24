@@ -18,7 +18,7 @@ public class InitializationEndpoint : EndpointWithoutRequest
 
     public override void Configure()
     {
-        Get("/initialize");
+        Post("/initialize");
         AllowAnonymous();
         Group<ElementsGroup>();
     }
@@ -33,7 +33,9 @@ public class InitializationEndpoint : EndpointWithoutRequest
 
         var response = new
         {
-            Message = "Elements module initialized successfully.",
+            Message = result.NewElementsCount > 0
+                ? "Elements module initialized successfully."
+                : "Elements module was already initialized, nothing was added.",
             ElementsCount = result.NewElementsCount
         };
 

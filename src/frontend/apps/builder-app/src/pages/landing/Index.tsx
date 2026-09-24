@@ -22,53 +22,61 @@ function LandingTile({
 }) {
   const isLarge = size === "lg";
 
-  return (
+  const className = `block h-full relative overflow-hidden rounded-xl group border-4 border-double shadow-lg ${enabled ? "" : "pointer-events-none"} `;
+
+  const content = (
     <>
-      <Link
-        to={url}
-        className={`block h-full relative overflow-hidden rounded-xl group border-4 border-double shadow-lg ${enabled ? "" : "pointer-events-none"} `}
+      <img
+        src={image || "https://www.dndbeyond.com/attachments/12/424/flash-sale.jpg"}
+        alt={title}
+        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105 ${
+          enabled ? "" : "grayscale-85 group-hover:grayscale-0 "
+        }`}
+      />
+
+      <div className="absolute inset-0 bg-linear-to-tr from-black/40 group-hover:from-black/20 to-transparent" />
+      {/* 
+      <div className="absolute rounded-lg rotate-160 w-20 h-20 -top-7 -right-5 bg-accent shadow-2xl"></div>
+      <SwordsIcon className="absolute  top-1 right-4 size-6 rotate-0 opacity-20 mt-2.5 ms-2.5" /> */}
+
+      <div
+        className={`prose prose-neutral dark:prose-invert absolute text-white ${
+          isLarge ? "left-2 right-2 bottom-2 sm:left-8 sm:right-8 sm:bottom-8" : "left-2 right-2 bottom-2 sm:left-4 sm:right-4 sm:bottom-4"
+        }  `}
       >
-        <img
-          src={image || "https://www.dndbeyond.com/attachments/12/424/flash-sale.jpg"}
-          alt={title}
-          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105 ${
-            enabled ? "" : "grayscale-85 group-hover:grayscale-0 "
-          }`}
-        />
-
-        <div className="absolute inset-0 bg-linear-to-tr from-black/40 group-hover:from-black/20 to-transparent" />
-        {/* 
-        <div className="absolute rounded-lg rotate-160 w-20 h-20 -top-7 -right-5 bg-accent shadow-2xl"></div>
-        <SwordsIcon className="absolute  top-1 right-4 size-6 rotate-0 opacity-20 mt-2.5 ms-2.5" /> */}
-
-        <div
-          className={`prose prose-neutral dark:prose-invert absolute text-white ${
-            isLarge ? "left-2 right-2 bottom-2 sm:left-8 sm:right-8 sm:bottom-8" : "left-2 right-2 bottom-2 sm:left-4 sm:right-4 sm:bottom-4"
-          }  `}
-        >
-          {isLarge ? (
-            <>
-              <h3 className="text-lg! sm:text-3xl! text-white mb-0">{title}</h3>
-              <p className="text-sm sm:text-base">{description}</p>
-            </>
-          ) : (
-            <>
-              <h3 className="text-base sm:text-xl! text-white mb-0 mt-1">{title}</h3>
-              <p className="text-xs sm:text-sm">{description}</p>
-            </>
-          )}
-        </div>
-        <div className={` absolute ${isLarge ? "left-2 right-2 top-2 sm:left-8 sm:right-8 sm:top-8" : "left-2 top-2 sm:left-4 sm:right-4 sm:top-4"}  `}>
-          {tag === undefined ? null : (
-            <>
-              <Badge variant={"outline"} className="backdrop-blur text-white border-white/50">
-                {tag}
-              </Badge>
-            </>
-          )}
-        </div>
-      </Link>
+        {isLarge ? (
+          <>
+            <h3 className="text-lg! sm:text-3xl! text-white mb-0">{title}</h3>
+            <p className="text-sm sm:text-base">{description}</p>
+          </>
+        ) : (
+          <>
+            <h3 className="text-base sm:text-xl! text-white mb-0 mt-1">{title}</h3>
+            <p className="text-xs sm:text-sm">{description}</p>
+          </>
+        )}
+      </div>
+      <div className={` absolute ${isLarge ? "left-2 right-2 top-2 sm:left-8 sm:right-8 sm:top-8" : "left-2 top-2 sm:left-4 sm:right-4 sm:top-4"}  `}>
+        {tag === undefined ? null : (
+          <>
+            <Badge variant={"outline"} className="backdrop-blur text-white border-white/50">
+              {tag}
+            </Badge>
+          </>
+        )}
+      </div>
     </>
+  );
+
+  // a planned tile has no page yet, so it renders without a link rather than leading to a 404
+  return enabled ? (
+    <Link to={url} className={className}>
+      {content}
+    </Link>
+  ) : (
+    <div aria-disabled="true" className={className}>
+      {content}
+    </div>
   );
 }
 

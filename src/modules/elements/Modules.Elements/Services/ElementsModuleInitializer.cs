@@ -3,6 +3,7 @@ using Starlights.Modules.Elements.Data;
 using Starlights.Modules.Elements.Domain;
 using Starlights.Modules.Elements.Domain.Builders;
 using Starlights.Modules.Elements.Domain.Components;
+using Starlights.Modules.Elements.Domain.Components.Class;
 using Starlights.Modules.Elements.Integration;
 using Starlights.Platform.Data;
 
@@ -25,6 +26,13 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
         using var _ = ElementsInstrumentation.StartActivity();
 
         var repository = _persistence.GetRepository<IElementsRepository>();
+
+        // the seed only fills an empty database, so running it again never duplicates content
+        if (await repository.AnyElementsAsync())
+        {
+            _logger.LogInformation("Elements already exist, skipping the seed.");
+            return new InitializationResult(0);
+        }
 
         CreateDefaultCharacterCreationOption(repository);
         CreateClasses(repository);
@@ -387,6 +395,7 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
 
         var barbarian = ElementBuilder.Create(ElementTypeConstants.Class, "Barbarian")
             .WithDescription("This is the class description.")
+            .WithComponent(id => new ClassAspects(id, HitPointDie.D12))
             .WithIncludeRule(barbarianFeature1.Id, levelRequirement: 1)
             .WithIncludeRule(barbarianFeature2.Id, levelRequirement: 2)
             .WithIncludeRule(barbarianFeature2_1.Id, levelRequirement: 2)
@@ -423,6 +432,29 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
             .Build();
 
 
+        // features and subclasses are built before their parent class exists, so the parent
+        // reference is attached here once the class element has an identity.
+        var barbarianParent = new ParentElement(barbarian.Id, barbarian.Name);
+
+        barbarianFeature1.AddComponent(id => new MetaComponent(id, barbarianParent));
+        barbarianFeature1.AddComponent(id => new FeatureAspects(id, level: 1, listingOrder: 1));
+
+        barbarianFeature2.AddComponent(id => new MetaComponent(id, barbarianParent));
+        barbarianFeature2.AddComponent(id => new FeatureAspects(id, level: 2, listingOrder: 2));
+
+        barbarianFeature2_1.AddComponent(id => new MetaComponent(id, barbarianParent));
+        barbarianFeature2_1.AddComponent(id => new FeatureAspects(id, level: 2, listingOrder: 2.1));
+
+        barbarianFeature3.AddComponent(id => new MetaComponent(id, barbarianParent));
+        barbarianFeature3.AddComponent(id => new FeatureAspects(id, level: 3, listingOrder: 3));
+
+        barbarianFeature20.AddComponent(id => new MetaComponent(id, barbarianParent));
+        barbarianFeature20.AddComponent(id => new FeatureAspects(id, level: 20, listingOrder: 20));
+
+        subclass1.AddComponent(id => new MetaComponent(id, barbarianParent));
+        subclass2.AddComponent(id => new MetaComponent(id, barbarianParent));
+        subclass3.AddComponent(id => new MetaComponent(id, barbarianParent));
+
         repository.Add(barbarian);
         repository.Add(barbarianFeature1);
         repository.Add(barbarianFeature2);
@@ -435,23 +467,39 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
 
 
         var rogueFeature1 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Rogue Feature 1")
+            .WithDescription("This is the first feature of the Rogue class.")
             .Build();
 
         var rogueFeature2 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Rogue Feature 2")
+            .WithDescription("This is the second feature of the Rogue class.")
             .Build();
 
         var rogueFeature3 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Rogue Feature 3")
+            .WithDescription("This is the third feature of the Rogue class.")
             .Build();
 
-        repository.Add(rogueFeature1);
-        repository.Add(rogueFeature2);
-        repository.Add(rogueFeature3);
-
         var rogue = ElementBuilder.Create(ElementTypeConstants.Class, "Rogue")
+            .WithDescription("This is the class description.")
+            .WithComponent(id => new ClassAspects(id, HitPointDie.D8))
             .WithIncludeRule(rogueFeature1.Id, levelRequirement: 1)
             .WithIncludeRule(rogueFeature2.Id, levelRequirement: 2)
             .WithIncludeRule(rogueFeature3.Id, levelRequirement: 3)
             .Build();
+
+        var rogueParent = new ParentElement(rogue.Id, rogue.Name);
+
+        rogueFeature1.AddComponent(id => new MetaComponent(id, rogueParent));
+        rogueFeature1.AddComponent(id => new FeatureAspects(id, level: 1, listingOrder: 1));
+
+        rogueFeature2.AddComponent(id => new MetaComponent(id, rogueParent));
+        rogueFeature2.AddComponent(id => new FeatureAspects(id, level: 2, listingOrder: 2));
+
+        rogueFeature3.AddComponent(id => new MetaComponent(id, rogueParent));
+        rogueFeature3.AddComponent(id => new FeatureAspects(id, level: 3, listingOrder: 3));
+
+        repository.Add(rogueFeature1);
+        repository.Add(rogueFeature2);
+        repository.Add(rogueFeature3);
 
         repository.Add(rogue);
     }

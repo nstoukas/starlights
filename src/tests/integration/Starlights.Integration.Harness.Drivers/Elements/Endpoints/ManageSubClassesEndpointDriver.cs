@@ -3,6 +3,7 @@ using AwesomeAssertions;
 using Starlights.Integration.Extensions;
 using Starlights.Modules.Elements.Endpoints.ContentManagement.Types.SubClasses;
 using Starlights.Modules.Elements.Endpoints.ContentManagement.Types.SubClasses.Create;
+using Starlights.Modules.Elements.Endpoints.ContentManagement.Types.SubClasses.GetList;
 
 namespace Starlights.Integration.Drivers.Elements.Endpoints;
 
@@ -42,5 +43,21 @@ public sealed class ManageSubClassesEndpointDriver : IDriver
         var payload = await response.Content.ReadFromJsonAsync<SubClassDataModel>(_integration.CancellationToken);
         payload.Should().NotBeNull();
         return payload;
+    }
+
+    /// <summary>
+    /// Retrieve subclasses via the API <code>/api/elements/sub-classes</code>
+    /// </summary>
+    public async Task<GetSubClassesResponse> GetListAsync()
+    {
+        using var client = _integration.CreateClient();
+
+        var response = await client.GetAsync("/api/elements/sub-classes", _integration.CancellationToken);
+        response.EnsureSuccessStatusCode();
+
+        var responseContent = await response.Content.ReadFromJsonAsync<GetSubClassesResponse>(_integration.CancellationToken);
+        responseContent.Should().NotBeNull();
+
+        return responseContent;
     }
 }

@@ -41,12 +41,12 @@ How game content is stored: an element with typed components attached (abbreviat
 
 ## Ground work
 
-### 9. Stabilize the fork
+### 9. Stabilize the fork · done
 Fix the known defects before building on top, so new work doesn't inherit them. Each fix is small and could go upstream as its own pull request.
 **Done when:** the uncommitted seeder fix is committed with a test that calls the class, class feature, and subclass list endpoints (they returned 500 before); the database initialize endpoint no longer runs on a `GET` and does nothing on a second call; the 7 dead navigation links are removed or point at real pages; the missing showcase image is fixed; all tests pass.
-- [ ] Build it: `/develop stabilize the fork`
-- [ ] Verify it: `/check verify stabilize the fork`
-- [ ] Test it: `/test stabilize the fork`
+- [x] Build it: `/develop stabilize the fork`
+- [x] Verify it: `/check verify stabilize the fork`
+- [x] Test it: `/test stabilize the fork`
 code in `src/modules/elements/`, `src/frontend/apps/builder-app/src/`
 
 ### 10. SRD attribution and content licensing

@@ -17,7 +17,7 @@ export function ObservabilityCard() {
     <Card className="relative w-full max-w-md overflow-hidden pt-0">
       <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
       <img
-        src="/images/wip_card.jpg"
+        src="/images/underdark.jpg"
         alt="Photo by author"
         title="Photo by author"
         className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"

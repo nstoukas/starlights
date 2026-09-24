@@ -57,7 +57,7 @@ public static class CommandExtensions
             commandOptions: new HttpCommandOptions()
             {
                 Description = "Initialize the elements in the database.",
-                Method = HttpMethod.Get,
+                Method = HttpMethod.Post,
                 PrepareRequest = (_) => Task.CompletedTask,
                 EndpointSelector = () => resource.GetEndpoint("https"),
                 IconName = "DatabaseLightning",

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AwesomeAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Starlights.Modules.Elements.Data;
 using Starlights.Modules.Elements.Domain;
@@ -23,6 +24,9 @@ public class ElementsModuleInitializationTests
 
         _persistenceMock.Setup(x => x.GetRepository<IElementsRepository>())
             .Returns(_elementsRepositoryMock.Object);
+
+        _elementsRepositoryMock.Setup(x => x.AnyElementsAsync())
+            .ReturnsAsync(false);
     }
 
     [TestMethod]
@@ -34,5 +38,21 @@ public class ElementsModuleInitializationTests
         // Assert
         _elementsRepositoryMock.Verify(x => x.Add(It.IsAny<Element>()), Times.AtLeastOnce);
         _persistenceMock.Verify(x => x.SaveChangesAsync(), Times.Once);
+    }
+
+    [TestMethod]
+    public async Task InitializeAsync_WhenElementsExist_AddsNothing()
+    {
+        // Arrange
+        _elementsRepositoryMock.Setup(x => x.AnyElementsAsync())
+            .ReturnsAsync(true);
+
+        // Act
+        var result = await _initialization.InitializeAsync();
+
+        // Assert
+        result.NewElementsCount.Should().Be(0, "a database that already holds elements must not be seeded again");
+        _elementsRepositoryMock.Verify(x => x.Add(It.IsAny<Element>()), Times.Never);
+        _persistenceMock.Verify(x => x.SaveChangesAsync(), Times.Never);
     }
 }

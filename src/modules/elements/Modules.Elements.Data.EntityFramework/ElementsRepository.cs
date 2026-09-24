@@ -20,6 +20,11 @@ internal class ElementsRepository : RepositoryBase<Element>, IElementsRepository
         Entities.Add(element);
     }
 
+    public async Task<bool> AnyElementsAsync()
+    {
+        return await Entities.AnyAsync();
+    }
+
     public async Task<bool> DeleteElementAsync(Guid identifier)
     {
         var element = await Entities.SingleOrDefaultAsync(e => e.Id == identifier);

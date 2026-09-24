@@ -3,6 +3,7 @@ using AwesomeAssertions;
 using Starlights.Integration.Extensions;
 using Starlights.Modules.Elements.Endpoints.ContentManagement.Types.ClassFeatures;
 using Starlights.Modules.Elements.Endpoints.ContentManagement.Types.ClassFeatures.Create;
+using Starlights.Modules.Elements.Endpoints.ContentManagement.Types.ClassFeatures.GetList;
 
 namespace Starlights.Integration.Drivers.Elements.Endpoints;
 
@@ -42,5 +43,21 @@ public sealed class ManageClassFeaturesEndpointDriver : IDriver
         var payload = await response.Content.ReadFromJsonAsync<ClassFeatureDataModel>(_integration.CancellationToken);
         payload.Should().NotBeNull();
         return payload;
+    }
+
+    /// <summary>
+    /// Retrieve class features via the API <code>/api/elements/class-features</code>
+    /// </summary>
+    public async Task<GetClassFeaturesResponse> GetListAsync()
+    {
+        using var client = _integration.CreateClient();
+
+        var response = await client.GetAsync("/api/elements/class-features", _integration.CancellationToken);
+        response.EnsureSuccessStatusCode();
+
+        var responseContent = await response.Content.ReadFromJsonAsync<GetClassFeaturesResponse>(_integration.CancellationToken);
+        responseContent.Should().NotBeNull();
+
+        return responseContent;
     }
 }

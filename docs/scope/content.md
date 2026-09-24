@@ -5,7 +5,7 @@ The content side: the content manager app (a blank placeholder today, in `src/fr
 ## Slice 3: Content manager
 
 ### 19. Content manager shell and browser · needs a decision
-Turn the placeholder app into a working tool: browse all content by type, search by name, and open an element to see its details, rules, and choices. Uses the existing content editing API (feature 8), so it's mostly frontend work and a good first taste of the React side.
+Turn the placeholder app into a working tool: browse all content by type, search by name, and open an element to see its details, rules, and choices. Uses the existing content editing API (feature 8), so it's mostly frontend work and a good first taste of the React side. The original author started one on the unmerged upstream branch `experimental/content-app` (scaffolds for `content-manager`, `ruleset-manager`, and a `content-api` client, mostly generated UI components); look at it before designing, to reuse it or offer yours back.
 **Done when:** you can list, filter, and search elements of every type and open one to see its components and rules; errors from the API show in the page.
 - [ ] Design it (spec): `/architect content manager shell and browser`
 code in `src/frontend/apps/content-manager/`

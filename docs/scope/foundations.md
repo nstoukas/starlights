@@ -21,7 +21,7 @@ The backend system behind every choice a player makes: an element declares "pick
 ### 5. Core character math · existing
 Ability scores and modifiers, saving throws, all 18 skills, proficiency bonus, and class levels, calculated on the server by the statistics calculator. code in `src/modules/characters/Modules.Characters/Services/Statistics/`
 
-## In progress
+## Improved in this fork
 
 ### 6. Developer character page · done
 The existing `/characters/:id` page is a working developer tool: it edits base and bonus ability scores, lists skills, and levels up classes through the real API. Keep it as your debugging view, and make it print cleanly.
@@ -61,7 +61,7 @@ Decide how the content model represents everything the 2024 rules need that it l
 - [ ] Design it (spec): `/architect rules content model for SRD 5.2`
 
 ### 12. Content files: export and import · needs a decision
-Content typed into the content manager lives only in your local database, which git doesn't track. Save all content to files in the repo and load them into any empty database, so content is versioned, reviewable in a pull request, and never lost with a Docker volume. This may also replace the hand written seeder.
+Content typed into the content manager lives only in your local database, which git doesn't track. Save all content to files in the repo and load them into any empty database, so content is versioned, reviewable in a pull request, and never lost with a Docker volume. This may also replace the hand written seeder. Whatever loads content should report how many elements it loaded: today the initialize response counts database rows (271) instead of elements (71).
 **Done when:** you can export all content to files, wipe the database, import the files, and get identical content back; a fresh `aspire run` loads content from the files.
 - [ ] Design it (spec): `/architect content files export and import`
 

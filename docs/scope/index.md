@@ -11,7 +11,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 ## Epics
 
-- [foundations.md](foundations.md): what already exists (1 to 8) and the ground work before new features (9 to 12). 1 done, 6 existing, 1 in progress, 4 planned.
+- [foundations.md](foundations.md): what already exists (1 to 8) and the ground work before new features (9 to 12). 3 done, 6 existing, 3 planned.
 - [builder.md](builder.md): the player side, from the first choice to a printable level 20 sheet (13 to 18, 23 to 27, 29 to 31, 33 to 34). 16 planned.
 - [content.md](content.md): the content manager, content editors, and the SRD content itself (19 to 22, 28, 32, 35 to 39). 11 planned.
 
@@ -111,7 +111,8 @@ Out of scope for this MVP, kept so the plan stays honest.
 **Project sources**
 - Root `AGENTS.md` and the nested `src/*/AGENTS.md` files: the stack, commands, and conventions.
 - The code itself, read on 2026-09-24: what is built (features 1 to 8), the 69 content editing endpoints, the placeholder builder page, and the seed content.
-- Known defects found on 2026-08-10: the six list endpoints returning 500, the initialize endpoint running on `GET`, 7 dead navigation links (feature 9).
+- Known defects found on 2026-08-10: the six list endpoints returning 500, the initialize endpoint running on `GET`, 7 dead navigation links (feature 9, fixed and merged 2026-09-25 in fork PR #2).
+- Upstream branch `experimental/content-app` (last touched 2026-04-10): the original author's unmerged start on a content manager (feature 19).
 
 **Practices and standards**
 - Tracer bullets: build a thin, real path through every layer first, then thicken it (from _The Pragmatic Programmer_).

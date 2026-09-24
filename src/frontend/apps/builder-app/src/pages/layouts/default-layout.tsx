@@ -95,7 +95,7 @@ export function LandingBackground2() {
 
 export function LandingBackground3() {
   return (
-    <>
+    <div className="print:hidden">
       <div
         className="absolute inset-0 -z-10 pointer-events-none bg-background dark:hidden"
         style={{
@@ -120,7 +120,7 @@ export function LandingBackground3() {
           maskImage: "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
         }}
       />
-    </>
+    </div>
   );
 }
 
@@ -374,7 +374,7 @@ export function MainNavigation() {
 
 export function Header() {
   return (
-    <div className="sticky top-0 bg-background/80 backdrop-blur-md z-20 border-b ">
+    <div className="sticky top-0 bg-background/80 backdrop-blur-md z-20 border-b print:hidden">
       <header className="container mx-auto px-4 ">
         <MainNavigation />
       </header>

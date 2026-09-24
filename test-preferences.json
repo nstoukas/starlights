@@ -1,0 +1,10 @@
+{
+  "tool": "vitest",
+  "gate": null,
+  "additionalTools": ["@testing-library/react", "@testing-library/user-event", "@testing-library/jest-dom"],
+  "e2eTool": "playwright",
+  "testDir": "beside the source (Vitest); src/frontend/apps/builder-app/e2e (Playwright)",
+  "filePattern": "*.test.ts / *.test.tsx (Vitest); *.spec.ts (Playwright)",
+  "packageManager": "npm",
+  "packageRoot": "src/frontend/apps/builder-app"
+}

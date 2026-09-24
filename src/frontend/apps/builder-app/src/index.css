@@ -118,3 +118,17 @@
     gap: 1rem;
   }
 }
+
+/* Paper is white: print with the light theme tokens even when the app is in dark mode. */
+@media print {
+  :root.dark {
+    color-scheme: light;
+    --background: var(--color-white);
+    --foreground: var(--base-800);
+    --card: var(--color-white);
+    --card-foreground: var(--base-800);
+    --muted: var(--base-100);
+    --muted-foreground: var(--base-500);
+    --border: var(--base-200);
+  }
+}

@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient, type UseMutationResult, type UseQueryResult } from "@tanstack/react-query";
 import {
+  builderQueryKeys,
   characterQueryKeys,
   characterQueryOptions,
   createCharacter,
@@ -107,6 +108,7 @@ export function useUpdateBaseAbilityScore(characterId: string): UseMutationResul
       setTimeout(() => {
         qc.invalidateQueries({ queryKey: characterQueryKeys.savingThrows(characterId) }).catch(() => {});
         qc.invalidateQueries({ queryKey: characterQueryKeys.skills(characterId) }).catch(() => {});
+        qc.invalidateQueries({ queryKey: builderQueryKeys.statistics(characterId) }).catch(() => {});
       }, 1000);
     },
   });
@@ -121,6 +123,7 @@ export function useUpdateAdditionalAbilityScore(characterId: string): UseMutatio
       setTimeout(() => {
         qc.invalidateQueries({ queryKey: characterQueryKeys.savingThrows(characterId) }).catch(() => {});
         qc.invalidateQueries({ queryKey: characterQueryKeys.skills(characterId) }).catch(() => {});
+        qc.invalidateQueries({ queryKey: builderQueryKeys.statistics(characterId) }).catch(() => {});
       }, 1000);
     },
   });

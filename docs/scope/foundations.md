@@ -49,11 +49,12 @@ Fix the known defects before building on top, so new work doesn't inherit them. 
 - [x] Test it: `/test stabilize the fork`
 code in `src/modules/elements/`, `src/frontend/apps/builder-app/src/`
 
-### 10. SRD attribution and content licensing
+### 10. SRD attribution and content licensing · done
 SRD 5.2 is free to use only if you credit Wizards of the Coast as its license asks, and only SRD content may be shared. Add the credit and keep non SRD content out of shipped data.
 **Done when:** the attribution text the SRD 5.2.1 asks for (see References in [index.md](index.md)) appears in the builder app (footer or about page) and in the repo README; placeholder content that is not in the SRD is replaced or clearly marked as test only.
-- [ ] Build it: `/develop SRD attribution and content licensing`
-- [ ] Verify it: `/check verify SRD attribution and content licensing`
+- [x] Build it: `/develop SRD attribution and content licensing`
+- [x] Verify it: `/check verify SRD attribution and content licensing`
+code in `README.md`, `src/frontend/apps/builder-app/src/pages/about/`, `src/frontend/apps/builder-app/src/components/site-footer.tsx`, `src/modules/elements/Modules.Elements/Services/ElementsModuleInitializer.cs`
 
 ### 11. Rules content model for SRD 5.2 · needs a decision
 Decide how the content model represents everything the 2024 rules need that it lacks today: per level class tables, spell slot progressions, species traits (size, speed, senses), backgrounds with ability increases and an origin feat, items, and spells. It's the costliest thing to redo later, so it comes before the features that fill it. (basis: data model is the costliest thing to redo; foundations before features)

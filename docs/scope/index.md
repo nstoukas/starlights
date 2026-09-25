@@ -11,7 +11,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 ## Epics
 
-- [foundations.md](foundations.md): what already exists (1 to 8) and the ground work before new features (9 to 12). 3 done, 6 existing, 3 planned.
+- [foundations.md](foundations.md): what already exists (1 to 8) and the ground work before new features (9 to 12). 4 done, 6 existing, 2 planned.
 - [builder.md](builder.md): the player side, from the first choice to a printable level 20 sheet (13 to 18, 23 to 27, 29 to 31, 33 to 34). 16 planned.
 - [content.md](content.md): the content manager, content editors, and the SRD content itself (19 to 22, 28, 32, 35 to 39). 11 planned.
 
@@ -28,7 +28,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 7 | Content model and starter seed | Foundation | existing |
 | 8 | Content editing API | Foundation | existing |
 | 9 | Stabilize the fork | Foundation | done |
-| 10 | SRD attribution and content licensing | Foundation | planned |
+| 10 | SRD attribution and content licensing | Foundation | done |
 | 11 | Rules content model for SRD 5.2 | Foundation | planned |
 | 12 | Content files: export and import | Foundation | planned |
 | 13 | Builder shell and choice picker | Slice 1 | planned |

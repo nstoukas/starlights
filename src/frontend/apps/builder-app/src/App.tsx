@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/components/site-footer";
 import { Outlet } from "react-router-dom";
 import { Header, LandingBackground3 } from "./pages/layouts/default-layout";
 
@@ -11,6 +12,7 @@ function App() {
           <Outlet />
         </main>
       </div>
+      <SiteFooter />
     </>
   );
 }
@@ -23,6 +25,7 @@ function AppWide() {
         <LandingBackground3 />
         <Outlet />
       </main>
+      <SiteFooter />
     </>
   );
 }

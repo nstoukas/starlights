@@ -6,6 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreVerticalIcon, SwordsIcon } from 
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DescriptionProseSection from "@/components/description-section";
+import { SiteFooter } from "@/components/site-footer";
 
 function DescriptionSidebar() {
   return (
@@ -100,6 +101,9 @@ function CharactersLayout() {
           <Outlet />
         </div>
       </div>
+
+      {/* outside the temp margin, so the credit keeps the full width on narrow screens */}
+      <SiteFooter />
 
       <DescriptionSidebar />
 

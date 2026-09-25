@@ -82,6 +82,14 @@ Each module is self-contained with its own domain logic, data persistence, and A
 
 This project builds on my experience developing [Aurora](https://www.aurorabuilder.com), a character builder for Windows.
 
+## Game Content
+
+The game rules in Starlights come from the System Reference Document 5.2.1, and only SRD content is shipped. Sample data invented to test the builder says so in its description (_Test only placeholder, not SRD content_).
+
+This work includes material from the System Reference Document 5.2.1 ("SRD 5.2.1") by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.
+
+Starlights is not affiliated with or endorsed by Wizards of the Coast.
+
 ## License
 
-This project is being developed in the open under the [MIT License](./LICENSE).
+This project is being developed in the open under the [MIT License](./LICENSE). The MIT License covers the source code; SRD content remains under its own license (see [Game Content](#game-content)).

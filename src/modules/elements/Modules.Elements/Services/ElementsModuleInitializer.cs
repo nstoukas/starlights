@@ -12,6 +12,10 @@ namespace Starlights.Modules.Elements.Services;
 // TODO: this should be in another 'extension' project that deals with the specifics of the game system
 internal class ElementsModuleInitializer : IElementsModuleInitializer
 {
+    // Only SRD 5.2.1 content may ship (see the SRD attribution in README.md). Elements invented to
+    // exercise the engine carry this note in their description so they're never mistaken for SRD content.
+    internal const string TestOnlyNote = "Test only placeholder, not SRD content.";
+
     private readonly ILogger<ElementsModuleInitializer> _logger;
     private readonly IPersistence _persistence;
 
@@ -363,25 +367,25 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
         var barbarianFeature1 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Barbarian Feature 1")
             .WithComponent(id => new SortingComponent(id, 1))
             .WithStatisticRule("barbarian-stat", "1", "", 0)
-            .WithDescription("This is the first feature of the Barbarian class.")
+            .WithDescription($"This is the first feature of the Barbarian class. {TestOnlyNote}")
             .Build();
 
         var barbarianFeature2 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Barbarian Feature 2")
             .WithComponent(id => new SortingComponent(id, 2))
             .WithStatisticRule("barbarian-stat", "2", "base", 2)
-            .WithDescription("This is the second feature of the Barbarian class.")
+            .WithDescription($"This is the second feature of the Barbarian class. {TestOnlyNote}")
             .Build();
 
         var barbarianFeature2_1 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Barbarian Feature 2.1")
             .WithComponent(id => new SortingComponent(id, 2.1))
             .WithStatisticRule("barbarian-stat", "2", "", 0)
-            .WithDescription("This is a nested feature of the second feature of the Barbarian class.")
+            .WithDescription($"This is a nested feature of the second feature of the Barbarian class. {TestOnlyNote}")
             .Build();
 
         var barbarianFeature3 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Barbarian Feature 3")
             .WithComponent(id => new SortingComponent(id, 3))
             .WithStatisticRule("barbarian-stat", "4", "base", 3)
-            .WithDescription("This is the third feature of the Barbarian class.")
+            .WithDescription($"This is the third feature of the Barbarian class. {TestOnlyNote}")
             .Build();
 
         var barbarianFeature20 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Primal Champion")
@@ -405,21 +409,21 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
             .Build();
 
         var subclass1 = ElementBuilder.Create(ElementTypeConstants.SubClass, "Barbarian SubClass 1")
-            .WithDescription("This is a barbarian subclass")
+            .WithDescription($"This is a barbarian subclass. {TestOnlyNote}")
             .WithStatisticRule("barbarian-stat", "10", "base", 0)
             .WithStatisticRule("extra-stat", "5", "base", 0)
             .WithSelectionRule("Proficiency", "Skill Proficiency A")
             .Build();
 
         var subclass2 = ElementBuilder.Create(ElementTypeConstants.SubClass, "Barbarian SubClass 2")
-            .WithDescription("This is another barbarian subclass")
+            .WithDescription($"This is another barbarian subclass. {TestOnlyNote}")
             .WithStatisticRule("barbarian-stat", "20", "base", 0)
             .WithStatisticRule("extra-stat", "5", "base", 0)
             .WithSelectionRule("Proficiency", "Skill Proficiency B")
             .Build();
 
         var subclass3 = ElementBuilder.Create(ElementTypeConstants.SubClass, "Path of the Strong Dude")
-            .WithDescription("This is yet another barbarian subclass")
+            .WithDescription($"This is yet another barbarian subclass. {TestOnlyNote}")
             .WithStatisticRule("barbarian-stat", "proficiency", "base", 0)
             .WithStatisticRule("strength", "2", "strong-dude", 0)
             .WithStatisticRule("constitution", "2", "strong-dude", 0)
@@ -467,15 +471,15 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
 
 
         var rogueFeature1 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Rogue Feature 1")
-            .WithDescription("This is the first feature of the Rogue class.")
+            .WithDescription($"This is the first feature of the Rogue class. {TestOnlyNote}")
             .Build();
 
         var rogueFeature2 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Rogue Feature 2")
-            .WithDescription("This is the second feature of the Rogue class.")
+            .WithDescription($"This is the second feature of the Rogue class. {TestOnlyNote}")
             .Build();
 
         var rogueFeature3 = ElementBuilder.Create(ElementTypeConstants.ClassFeature, "Rogue Feature 3")
-            .WithDescription("This is the third feature of the Rogue class.")
+            .WithDescription($"This is the third feature of the Rogue class. {TestOnlyNote}")
             .Build();
 
         var rogue = ElementBuilder.Create(ElementTypeConstants.Class, "Rogue")
@@ -507,6 +511,7 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
     private static void CreateSpecies(IElementsRepository repository)
     {
         var humanFeature = ElementBuilder.Create(ElementTypeConstants.SpeciesFeature, "Human Feature")
+            .WithDescription(TestOnlyNote)
             .Build();
 
         var human = ElementBuilder.Create(ElementTypeConstants.Species, "Human")
@@ -517,6 +522,7 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
         repository.Add(human);
 
         var elfFeature = ElementBuilder.Create(ElementTypeConstants.SpeciesFeature, "Elf Feature")
+            .WithDescription(TestOnlyNote)
             .Build();
 
         var elf = ElementBuilder.Create(ElementTypeConstants.Species, "Elf")
@@ -530,6 +536,7 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
     private static void CreateBackgrounds(IElementsRepository repository)
     {
         var acolyteFeature = ElementBuilder.Create(ElementTypeConstants.BackgroundFeature, "Acolyte Feature")
+            .WithDescription(TestOnlyNote)
             .Build();
 
         var acolyte = ElementBuilder.Create(ElementTypeConstants.Background, "Acolyte")
@@ -540,15 +547,16 @@ internal class ElementsModuleInitializer : IElementsModuleInitializer
         repository.Add(acolyte);
 
 
-        var charlatanFeature = ElementBuilder.Create(ElementTypeConstants.BackgroundFeature, "Charlatan Feature")
+        var criminalFeature = ElementBuilder.Create(ElementTypeConstants.BackgroundFeature, "Criminal Feature")
+            .WithDescription(TestOnlyNote)
             .Build();
 
-        var charlatan = ElementBuilder.Create(ElementTypeConstants.Background, "Charlatan")
-            .WithIncludeRule(charlatanFeature.Id, 3)
+        var criminal = ElementBuilder.Create(ElementTypeConstants.Background, "Criminal")
+            .WithIncludeRule(criminalFeature.Id, 3)
             .Build();
 
-        repository.Add(charlatanFeature);
-        repository.Add(charlatan);
+        repository.Add(criminalFeature);
+        repository.Add(criminal);
     }
 
     private static void CreateAlignments(IElementsRepository repository)
